@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.huhu.springbootdemo.mapper.UserMapper" >
-    <resultMap id="BaseResultMap" type="com.huhu.springbootdemo.model.User" >
+    <resultMap id="BaseResultMap" type="com.huhu.springbootdemo.data.model.UserModel" >
         <id column="id" property="id" jdbcType="BIGINT" />
         <result column="userName" property="userName" jdbcType="VARCHAR" />
         <result column="passWord" property="passWord" jdbcType="VARCHAR" />
-        <result column="user_sex" property="userSex" javaType="com.huhu.springbootdemo.enums.UserSexEnum"/>
+        <result column="user_sex" property="userSex" javaType="com.huhu.springbootdemo.data.enums.UserSexEnum"/>
         <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
     </resultMap>
 
@@ -19,14 +19,21 @@
         FROM users
     </select>
 
-    <select id="getOne" parameterType="java.lang.Long" resultMap="BaseResultMap" >
+    <select id="getOne" parameterType="Long" resultMap="BaseResultMap" >
         SELECT
         <include refid="Base_Column_List" />
         FROM users
         WHERE id = #{id}
     </select>
 
-    <insert id="insert" parameterType="com.huhu.springbootdemo.model.User" >
+    <select id="getUserByUserName" parameterType="String" resultMap="BaseResultMap" >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM users
+        WHERE userName = #{username}
+    </select>
+
+    <insert id="insert" parameterType="com.huhu.springbootdemo.data.model.UserModel" >
         INSERT INTO
         users
         (userName,passWord,user_sex)
@@ -34,7 +41,7 @@
         (#{userName}, #{passWord}, #{userSex})
     </insert>
 
-    <update id="update" parameterType="com.huhu.springbootdemo.model.User" >
+    <update id="update" parameterType="com.huhu.springbootdemo.data.model.UserModel" >
         UPDATE
         users
         SET

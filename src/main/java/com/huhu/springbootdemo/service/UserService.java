@@ -1,13 +1,13 @@
 package com.huhu.springbootdemo.service;
 
 
-import com.huhu.springbootdemo.model.User;
-import com.huhu.springbootdemo.vo.UserVo;
+import com.huhu.springbootdemo.data.model.UserModel;
+import com.huhu.springbootdemo.data.form.UserForm;
 
 import java.util.List;
 
 public interface UserService {
 
-    List<User> getAll(UserVo userVo);
+    List<UserModel> getAll(UserForm userForm);
 
 }

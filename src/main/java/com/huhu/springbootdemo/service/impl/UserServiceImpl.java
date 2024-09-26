@@ -2,9 +2,9 @@ package com.huhu.springbootdemo.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.huhu.springbootdemo.mapper.UserMapper;
-import com.huhu.springbootdemo.model.User;
+import com.huhu.springbootdemo.data.model.UserModel;
 import com.huhu.springbootdemo.service.UserService;
-import com.huhu.springbootdemo.vo.UserVo;
+import com.huhu.springbootdemo.data.form.UserForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,9 +18,9 @@ public class UserServiceImpl implements UserService {
     UserMapper userMapper;
 
     @Override
-    public List<User> getAll(UserVo userVo) {
+    public List<UserModel> getAll(UserForm userForm) {
 
-        PageHelper.startPage(userVo.getPage(),userVo.getRows());
+        PageHelper.startPage(userForm.getPage(), userForm.getRows());
         return userMapper.getAll();
     }
 }

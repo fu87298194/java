@@ -1,4 +1,4 @@
-package com.huhu.springbootdemo.enums;
+package com.huhu.springbootdemo.data.enums;
 
 public enum ReturnCode {
     /**操作成功**/
@@ -15,10 +15,15 @@ public enum ReturnCode {
     RC203(203,"系统规则不满足要求,请稍后再试!"),
     /**授权规则不通过**/
     RC204(204,"授权规则不通过,请稍后再试!"),
+
+    RC400(400,"数据绑定错误"),
+    /**授权规则不通过**/
+    RC205(205,"参数问题,请核对好参数!"),
     /**access_denied**/
     RC403(403,"无访问权限,请联系管理员授予权限"),
     /**access_denied**/
     RC401(401,"匿名用户访问无权限资源时的异常"),
+    RC404(404,"用户请求不支持"),
     /**服务异常**/
     RC500(500,"系统异常，请稍后重试"),
 

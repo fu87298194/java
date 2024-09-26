@@ -1,10 +1,13 @@
-package com.huhu.springbootdemo.model;
+package com.huhu.springbootdemo.data.model;
 
-import com.huhu.springbootdemo.enums.UserSexEnum;
+import com.huhu.springbootdemo.data.enums.UserSexEnum;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
-public class User implements Serializable {
+@AllArgsConstructor
+public class UserModel implements Serializable {
     private String id;
     private String userName;
     private String passWord;

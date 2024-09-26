@@ -1,6 +1,6 @@
-package com.huhu.springbootdemo.model;
+package com.huhu.springbootdemo.data.model;
 
-import com.huhu.springbootdemo.enums.ReturnCode;
+import com.huhu.springbootdemo.data.enums.ReturnCode;
 import lombok.Data;
 
 @Data

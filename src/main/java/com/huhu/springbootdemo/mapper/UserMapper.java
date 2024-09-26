@@ -1,12 +1,13 @@
 package com.huhu.springbootdemo.mapper;
 
 
-import com.huhu.springbootdemo.model.User;
+import com.huhu.springbootdemo.data.model.UserModel;
 
 import java.util.List;
 
 public interface UserMapper {
 
-    List<User> getAll();
+    List<UserModel> getAll();
 
+    UserModel getUserByUserName(String username);
 }

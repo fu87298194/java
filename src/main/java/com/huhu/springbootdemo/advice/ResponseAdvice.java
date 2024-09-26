@@ -1,8 +1,8 @@
 package com.huhu.springbootdemo.advice;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.huhu.springbootdemo.enums.ReturnCode;
-import com.huhu.springbootdemo.model.ResultData;
+import com.huhu.springbootdemo.data.enums.ReturnCode;
+import com.huhu.springbootdemo.data.model.ResultData;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +18,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 @Slf4j
@@ -61,9 +62,15 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
         FieldError fieldError = e.getFieldError();
         String message = "[" + e.getAllErrors().get(0).getDefaultMessage()+"]";
 
-        return ResultData.fail(ReturnCode.RC500.getCode(),message);
+        return ResultData.fail(ReturnCode.RC205.getCode(),message);
     }
 
+
+    @ExceptionHandler(NoHandlerFoundException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ResultData<String> handleException(NoHandlerFoundException e){
+        return ResultData.fail(ReturnCode.RC404.getCode(),"不支持" + e.getRequestURL()+"请求");
+    }
 
     /**
      * 默认全局异常处理。

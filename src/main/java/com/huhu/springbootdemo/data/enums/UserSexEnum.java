@@ -1,4 +1,4 @@
-package com.huhu.springbootdemo.enums;
+package com.huhu.springbootdemo.data.enums;
 
 public enum UserSexEnum {
 

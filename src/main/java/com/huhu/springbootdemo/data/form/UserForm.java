@@ -1,11 +1,10 @@
-package com.huhu.springbootdemo.vo;
+package com.huhu.springbootdemo.data.form;
 
-import com.huhu.springbootdemo.model.BaseEntity;
+import com.huhu.springbootdemo.data.vo.PageInfoVo;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
-public class UserVo extends BaseEntity {
+public class UserForm extends PageInfoVo {
     @NotBlank(message = "userName不能为空")
     private String userName;
 
